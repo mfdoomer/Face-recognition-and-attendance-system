@@ -30,7 +30,7 @@ class Attendance:
 
         # First image
 
-        img_left = Image.open(r"C:\Users\Abr79\PycharmProjects\pythonProject2\College images\Attendance3.png")
+        img_left = Image.open(r"D:\py\pythonProject2\College images\Attendance3.png")
         img_left = img_left.resize((1275, 220), Image.ANTIALIAS)
         self.photoimg = ImageTk.PhotoImage(img_left)
 
@@ -39,7 +39,7 @@ class Attendance:
 
         # bg image
 
-        img2 = Image.open(r"C:\Users\Abr79\PycharmProjects\pythonProject2\College images\canvas.jpg")
+        img2 = Image.open(r"D:\py\pythonProject2\College images\canvas.jpg")
         img2 = img2.resize((1275, 700), Image.ANTIALIAS)
         self.photoimg2 = ImageTk.PhotoImage(img2)
 
@@ -59,7 +59,7 @@ class Attendance:
                                 font=("times new roman", 15, "bold"))
         left_frame.place(x=5, y=0, width=620, height=550)
 
-        img_left = Image.open(r"C:\Users\Abr79\PycharmProjects\pythonProject2\College images\attendance3.png")
+        img_left = Image.open(r"D:\py\pythonProject2\College images\attendance3.png")
         img_left = img_left.resize((660, 200), Image.ANTIALIAS)
         self.photoimg_left = ImageTk.PhotoImage(img_left)
 
@@ -161,7 +161,7 @@ class Attendance:
                             fg="white")
         export_btn.grid(row=4, column=1)
 
-        delete_btn = Button(btn_frame, text="Delete", width=20, command=self.reset,
+        delete_btn = Button(btn_frame, text="Reset", width=20, command=self.reset,
                             font=("times new roman", 13, "bold"), bg="gray",
                             fg="white")
         delete_btn.grid(row=4, column=2)
@@ -174,7 +174,7 @@ class Attendance:
 
         # right image
 
-        img_right = Image.open(r"C:\Users\Abr79\PycharmProjects\pythonProject2\College images\attendance3.png")
+        img_right = Image.open(r"D:\py\pythonProject2\College images\attendance3.png")
         img_right = img_right.resize((640, 200), Image.ANTIALIAS)
         self.photoimg_right = ImageTk.PhotoImage(img_right)
 
