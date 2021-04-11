@@ -1,0 +1,4 @@
+install opencv-python or opencv-contrib
+install mysql-connector-python
+install mysql database for writing queries
+install Pillow
