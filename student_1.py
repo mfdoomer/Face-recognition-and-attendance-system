@@ -32,7 +32,7 @@ class student:
 
         # First image
 
-        img_left = Image.open(r"C:\Users\Abr79\PycharmProjects\pythonProject2\College images\students1.jpg ")
+        img_left = Image.open(r"D:\py\pythonProject2\College images\students1.jpg ")
         img_left = img_left.resize((1275, 200), Image.ANTIALIAS)
         self.photoimg = ImageTk.PhotoImage(img_left)
 
@@ -41,7 +41,7 @@ class student:
 
         # bg image
 
-        img2 = Image.open(r"C:\Users\Abr79\PycharmProjects\pythonProject2\College images\canvas.jpg")
+        img2 = Image.open(r"D:\py\pythonProject2\College images\canvas.jpg")
         img2 = img2.resize((1275, 700), Image.ANTIALIAS)
         self.photoimg2 = ImageTk.PhotoImage(img2)
 
@@ -63,7 +63,7 @@ class student:
 
         # left image
 
-        img_left = Image.open(r"C:\Users\Abr79\PycharmProjects\pythonProject2\College images\student2.jpg")
+        img_left = Image.open(r"D:\py\pythonProject2\College images\student2.jpg")
         img_left = img_left.resize((1275, 200), Image.ANTIALIAS)
         self.photoimg_left = ImageTk.PhotoImage(img_left)
 
@@ -294,7 +294,7 @@ class student:
 
         # right image
 
-        img_right = Image.open(r"C:\Users\Abr79\PycharmProjects\pythonProject2\College images\student2.jpg")
+        img_right = Image.open(r"D:\py\pythonProject2\College images\student2.jpg")
         img_right = img_right.resize((1275, 200), Image.ANTIALIAS)
         self.photoimg_right = ImageTk.PhotoImage(img_right)
 
@@ -369,21 +369,21 @@ class student:
         self.student_table.heading("Photo sample", text="Photo sample")
         self.student_table["show"] = "headings"
 
-        self.student_table.column("Department", width=100)
-        self.student_table.column("Course", width=100)
-        self.student_table.column("Year", width=100)
-        self.student_table.column("Semester", width=100)
-        self.student_table.column("Student ID", width=100)
-        self.student_table.column("Student Name", width=100)
-        self.student_table.column("Class Division", width=100)
-        self.student_table.column("Roll No", width=100)
-        self.student_table.column("DOB", width=100)
-        self.student_table.column("Gender", width=100)
-        self.student_table.column("Email ID", width=100)
-        self.student_table.column("Phone No", width=100)
-        self.student_table.column("Address", width=100)
-        self.student_table.column("Teacher Name", width=100)
-        self.student_table.column("Photo sample", width=100)
+        self.student_table.column("Department", width=100,anchor="center")
+        self.student_table.column("Course", width=100,anchor="center")
+        self.student_table.column("Year", width=100,anchor="center")
+        self.student_table.column("Semester", width=100,anchor="center")
+        self.student_table.column("Student ID", width=100,anchor="center")
+        self.student_table.column("Student Name", width=100,anchor="center")
+        self.student_table.column("Class Division", width=100,anchor="center")
+        self.student_table.column("Roll No", width=100,anchor="center")
+        self.student_table.column("DOB", width=100,anchor="center")
+        self.student_table.column("Gender", width=100,anchor="center")
+        self.student_table.column("Email ID", width=100,anchor="center")
+        self.student_table.column("Phone No", width=100,anchor="center")
+        self.student_table.column("Address", width=100,anchor="center")
+        self.student_table.column("Teacher Name", width=100,anchor="center")
+        self.student_table.column("Photo sample", width=100,anchor="center")
         # self.student_table["show"] = "headings"
 
         self.student_table.pack(fill=BOTH, expand=1)
@@ -532,14 +532,20 @@ class student:
                     conn = mysql.connector.connect(host="localhost", username="root", password="root",
                                                    database="face_recognition")
                     my_cursor = conn.cursor()
+                    sql1 = "delete from Attendance where Student_ID=%s"
+                    val1 = (self.var_Student_ID.get(),)
+                    my_cursor.execute(sql1, val1)
+
                     sql = "delete from student where Student_ID=%s"
                     val = (self.var_Student_ID.get(),)
                     my_cursor.execute(sql, val)
+
                     conn.commit()
-                    self.fetch_data()
                     conn.close()
                     messagebox.showinfo("Success", "Student data has been successfully deleted",
                                         parent=self.root)
+                    
+                    self.fetch_data()
                 else:
                     if not delete:
                         return
@@ -624,7 +630,7 @@ class student:
                     ret, frame_1 = cap.read()
                     if face_cropped(frame_1) is not None:
                         img_id += 1
-                        face = cv2.resize(face_cropped(frame_1), (800, 600))
+                        face = cv2.resize(face_cropped(frame_1),None, fx=2.2, fy=2.5, interpolation=cv2.INTER_AREA)
                         face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
                         file_path = "img data/user." + str(id) + "." + str(img_id) + ".jpg"
                         cv2.imwrite(file_path, face)
