@@ -24,7 +24,7 @@ class Developer:
                          bg="white", fg="gray")
         title_lbl.place(x=23, y=0, width=1275, height=70)
 
-        title_lbl = Label(right_frame,text="Contact info :- 809799352",
+        title_lbl = Label(right_frame,text="Contact info :- ",
                           anchor=CENTER,
                           font=("times new roman", 30, "bold"),
                           bg="white", fg="gray")
